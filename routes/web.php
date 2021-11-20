@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProcessPaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +19,8 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('/process-payment', function () {
-	return view('test', ['description' => 'Process values received from iPay and register user']);
-});
+Route::get('/preprocess', 'ProcessPaymentController@preprocess');
 
-Route::get('/preprocess', function () {
-	return view('test', ['description' => 'Process payment before sending to iPay']);
-});
+Route::get('/process-payment', 'ProcessPaymentController@processPayment');
+
+

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\BaseController as BaseController;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\BaseController as BaseController;
 use App\Models\MoworxUser;
 use App\Models\MoworxOrder;
-use Illuminate\Support\Facades\Hash;
 use ReallySimpleJWT\Token;
 
 class MoworxAuthController extends BaseController
