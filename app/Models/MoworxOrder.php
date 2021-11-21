@@ -9,14 +9,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class MoworxOrder extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+	use HasApiTokens, HasFactory, Notifiable;
 
-    /**
+	/**
 	 * The table associated with the model.
 	 *
 	 * @var string
 	 */
 	protected $table = 'moworx_orders';
+
+	/**
+	 * All model properties can be altered
+	 * 
+	 * @var array 
+	 */
+	protected $guarded = [];
 
 	/**
 	 * Indicates if the model should be timestamped.
@@ -25,7 +32,8 @@ class MoworxOrder extends Model
 	 */
 	// public $timestamps = false;
 
-    public function user() {
-        return $this->belongsTo(MoworxUser::class);
-    }
+	public function user()
+	{
+		return $this->belongsTo(MoworxUser::class);
+	}
 }

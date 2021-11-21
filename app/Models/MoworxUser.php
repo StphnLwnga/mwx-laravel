@@ -19,6 +19,13 @@ class MoworxUser extends Model
 	protected $table = 'moworx_users';
 
 	/**
+	 * All model properties can be altered
+	 * 
+	 * @var array 
+	 */
+	protected $guarded = [];
+
+	/**
 	 * Indicates if the model should be timestamped.
 	 *
 	 * @var bool
