@@ -28,6 +28,6 @@ class MoworxMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from Moworx Kenya')->view('mail.moworx-mail');
+        return $this->subject('Mail from Moworx Kenya')->markdown('mail.moworx-mail')->with($this->details);
     }
 }

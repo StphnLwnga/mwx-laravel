@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
 
+use \App\Mail\MoworxMail;
 use App\Models\MoworxUser;
 use App\Models\MoworxOrder;
 
@@ -161,9 +162,14 @@ class ProcessPaymentController extends Controller
 					'title' => 'User Registration',
 					'test' => 'This is a test message'
 				];
-				
 
-				Mail::to('boywilder99@gmail.com')->send(new \App\Mail\MoworxMail($details));
+				Mail::to('boywilder99@gmail.com')->send(new MoworxMail(['details' => $details]));
+
+				if (Mail::failures()) {
+					$mailResponse = 'Sorry! Please try again latter';
+				} else {
+					$mailResponse = 'Great! Successfully send in your mail';
+				}
 			}
 
 			/** Send email confirming payment */
@@ -190,6 +196,7 @@ class ProcessPaymentController extends Controller
 				'value_dump' => $request->all(),
 				'values' => $values,
 				'order_existed' => $orderExists ?? false,
+				'mail_response' => $mailResponse,
 			],
 		);
 	}
