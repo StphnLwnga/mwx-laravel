@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BaseController as BaseController;
 use App\Models\MoworxUser;
 use App\Models\MoworxOrder;
-use ReallySimpleJWT\Token;
+// use ReallySimpleJWT\Token;
 
 class MoworxAuthController extends BaseController
 {
@@ -44,8 +44,8 @@ class MoworxAuthController extends BaseController
       'iss' => 'localhost'
     ];
 
-    $token = Token::customPayload($payload, env('JWT_SECRET'));
-    $userRecord['token'] = $token;
+    // $token = Token::customPayload($payload, env('JWT_SECRET'));
+    // $userRecord['token'] = $token;
 
     // return $this->sendResponse(['token' => $token], 'User sign in');
 
