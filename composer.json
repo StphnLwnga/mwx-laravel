@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.12",
         "laravel/tinker": "^2.5",
         "rbdwllr/reallysimplejwt": "^4.0",
+        "symfony/psr-http-message-bridge": "^2.1",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

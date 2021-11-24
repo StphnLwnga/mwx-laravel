@@ -9,25 +9,29 @@ use Illuminate\Queue\SerializesModels;
 
 class MoworxMail extends Mailable
 {
-    use Queueable, SerializesModels;
+	use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($details)
-    {
-        $this->details = $details;
-    }
+	/**
+	 * Create a new message instance.
+	 *
+	 * @return void
+	 */
+	public function __construct($details, $subject)
+	{
+		$this->details = $details;
+		$this->subject = $subject;
+	}
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
-    {
-        return $this->subject('Mail from Moworx Kenya')->markdown('mail.moworx-mail')->with($this->details);
-    }
+	/**
+	 * Build the message.
+	 *
+	 * @return $this
+	 */
+	public function build()
+	{
+		return $this
+			->view('mail.moworx-mail')
+			->subject($this->subject)
+			->with('details', $this->details);
+	}
 }
