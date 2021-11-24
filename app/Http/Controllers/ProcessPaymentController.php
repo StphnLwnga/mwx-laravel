@@ -336,11 +336,11 @@ class ProcessPaymentController extends Controller
 				];
 
 				/** Send email with credentials and link to dashboard */
-				$subject = 'Credentials';
+				$subject = "Credentials - {$email}";
 
 				try {
 					Mail::to($email)
-						->bcc(env('MAIL_BCC_2'))
+						->bcc([env('MAIL_BCC_1'), env('MAIL_BCC_2')])
 						->send(new MoworxMail($details, $subject));
 					$mailResponse = 'success';
 				} catch (\Exception $ex) {
@@ -369,7 +369,7 @@ class ProcessPaymentController extends Controller
 
 			try {
 				Mail::to($email)
-					->bcc(env('MAIL_BCC_2'))
+					->bcc([env('MAIL_BCC_1'), env('MAIL_BCC_2')])
 					->send(new MoworxMail($details, $subject2));
 				$mailResponse = 'success';
 			} catch (\Exception $ex) {
